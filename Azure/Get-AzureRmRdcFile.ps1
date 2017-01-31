@@ -60,7 +60,6 @@ $rdgXmlFile = [XML]'<?xml version="1.0" encoding="utf-8"?>
 
 Write-Output "Get-AzureRMmRdcFile.ps1 - The Azure Resource Manager RDCMan generator"
 Write-Output "by Carlos Milán Figuered - https://www.calnus.com"
-Write-Output "`r`nAdding username and password..."
 
 $rdgXmlFile.RDCMan.file.properties.name = $Name
 
