@@ -13,8 +13,8 @@
 .PARAMETER StorageAccountKey
     Key for accessing the storage account.
 .PARAMETER BackupFile
-    Path and filename of the the file to backup after VSS have been applied.
-    Example: "S:\DATA.VHDX"
+    Path and filename of the the file to backup.
+    Example: "E:\DATA.VHDX"
 .PARAMETER DaysToRemoveOldObject
     Objects found in storage account older that this value will be removed
 .PARAMETER ShadowDriveLetter
