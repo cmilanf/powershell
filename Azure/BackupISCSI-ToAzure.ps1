@@ -87,9 +87,10 @@ Write-Output ""
 $DiskShadowScriptStart | Out-File -FilePath "$TempFolder\diskshadow-start.txt" -Encoding ascii
 cmd.exe /c "diskshadow /s $TempFolder\diskshadow-start.txt"
 Remove-Item -Path "$TempFolder\diskshadow-start.txt"
+$BackupFileShadow = $BackupFile.Remove(0,2).Insert(0,$ShadowDriveLetter)
 
 # ##### AZURE STORAGE UPLOAD & TIER SET #####
-Set-AzureStorageBlobContent -Blob "$backupFileNameExtensionLess-$date$backupFilenameExtension" -Container $BlobContainerName -File $BackupFile -Context $context -Force -Verbose
+Set-AzureStorageBlobContent -Blob "$backupFileNameExtensionLess-$date$backupFilenameExtension" -Container $BlobContainerName -File $BackupFileShadow -Context $context -Force -Verbose
 if($?) {
     $blob=Get-AzureStorageBlob -Blob "$backupFileNameExtensionLess-$date$backupFilenameExtension" -Container $BlobContainerName -Context $context -Verbose
     Write-Output "Setting storage tier to ARCHIVE..."
